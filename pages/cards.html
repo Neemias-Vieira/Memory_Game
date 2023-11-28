@@ -11,16 +11,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <title>Memory Game</title>
     <link rel="stylesheet" href="../styles/cards.css" />
     <script src="../scripts/cards.js" defer></script>
   </head>
   <body>
     <div class="container">
-      <h1>Cards</h1>
-      <span class="playerName"></span>
+      <main>
+        <aside>
+          <button class="backButton">&lt; sair</button>
+          <div>
+            <span class="playerName"></span>
+            <span class="timer">00:00</span>
+          </div>
+        </aside>
+
+        <div class="gridCards">
+          <div class="card" name="">
+            <div class="front">
+              <img src="../images/card_1.jpg" />
+            </div>
+            <!--front-->
+
+            <div class="back">
+              <img src="../images/yugioh-card-back.png" />
+            </div>
+            <!--back-->
+          </div>
+          <!--card-->
+        </div>
+        <!--gridCards-->
+      </main>
     </div>
   </body>
 </html>
