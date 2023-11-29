@@ -19,10 +19,6 @@ function handleSubmitNewGame(event) {
   const playerResp = confirm(
     "Ao clicar em 'OK' o tempo ja estará contando, então seja ágil."
   );
-
-  if (playerResp) {
-    window.location.href = "pages/cards.html";
-  }
 }
 
 function navigateToRank() {
