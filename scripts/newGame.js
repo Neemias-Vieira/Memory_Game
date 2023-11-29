@@ -15,10 +15,7 @@ function handleSubmitNewGame(event) {
   event.preventDefault();
   localStorage.setItem("@memoryGame:playerName", inputName.value);
   inputName.value = "";
-
-  const playerResp = confirm(
-    "Ao clicar em 'OK' o tempo ja estará contando, então seja ágil."
-  );
+  window.location.href = "pages/cards.html";
 }
 
 function navigateToRank() {
