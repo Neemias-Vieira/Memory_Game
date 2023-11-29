@@ -14,7 +14,14 @@ function handleSubmitNewGame(event) {
   event.preventDefault();
   localStorage.setItem("@memoryGame:playerName", inputName.value);
   inputName.value = "";
-  window.location.href = "pages/cards.html";
+
+  const playerResp = confirm(
+    "Ao clicar em 'OK' o tempo ja estará contando, então seja ágil."
+  );
+
+  if (playerResp) {
+    window.location.href = "pages/cards.html";
+  }
 }
 
 inputName.addEventListener("input", validateInput);

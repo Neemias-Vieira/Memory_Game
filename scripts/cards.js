@@ -61,13 +61,39 @@ function cleanNameCards() {
   secondCard = "";
 }
 
+function checkGameWin() {
+  const disabledCards = document.querySelectorAll(".disabledCard");
+  if (disabledCards.length === 24) {
+    clearInterval(finishTimerInterval);
+
+    const userData = {
+      name: playerName.textContent,
+      time: timer.textContent,
+    };
+
+    const storageRank = JSON.parse(localStorage.getItem("@memoryGame:rank"));
+
+    if (storageRank) {
+      const rankData = [...storageRank, userData];
+      localStorage.setItem("@memoryGame:rank", JSON.stringify(rankData));
+    } else {
+      localStorage.setItem("@memoryGame:rank", JSON.stringify([userData]));
+    }
+
+    alert(
+      `Parabéns ${storagePlayerName}, você venceu com tempo de ${timer.innerHTML}!`
+    );
+  }
+}
+
 function checkMacthCards() {
   if (firstCard.getAttribute("name") === secondCard.getAttribute("name")) {
     new Audio("../audios/sci-fi.wav").play();
     setTimeout(() => {
-      firstCard.classList.add("disabeCard");
-      secondCard.classList.add("disabeCard");
+      firstCard.classList.add("disabledCard");
+      secondCard.classList.add("disabledCard");
       cleanNameCards();
+      checkGameWin();
     }, 500);
   } else {
     setTimeout(() => {
@@ -98,9 +124,24 @@ function clickFlipCard() {
   });
 }
 
+function setStartTime() {
+  finishTimerInterval = setInterval(() => {
+    const dateNow = new Date();
+
+    const dateDiff = new Date(dateNow - initialDateTimer);
+
+    const minutes = String(dateDiff.getMinutes()).padStart(2, "0");
+
+    const seconds = String(dateDiff.getSeconds()).padStart(2, "0");
+
+    timer.innerHTML = `${minutes}:${seconds}`;
+  }, 1000);
+}
+
 const playerName = document.querySelector(".playerName");
 const backButton = document.querySelector(".backButton");
 const gridCards = document.querySelector(".gridCards");
+const timer = document.querySelector(".timer");
 
 const storagePlayerName = localStorage.getItem("@memoryGame:playerName");
 localStorage.getItem("@memoryGame:playerName");
@@ -113,3 +154,7 @@ createCards();
 let firstCard = "";
 let secondCard = "";
 clickFlipCard();
+
+const initialDateTimer = new Date();
+let finishTimerInterval;
+setStartTime();

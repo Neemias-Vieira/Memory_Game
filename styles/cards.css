@@ -74,7 +74,7 @@ aside button {
   transform: rotateY(0deg);
 }
 
-.disabeCard img {
+.disabledCard img {
   /* Adicionado no acerto no JS*/
   filter: saturate(0.1);
 }
