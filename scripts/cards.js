@@ -1,12 +1,16 @@
 document.addEventListener("contextmenu", (event) => event.preventDefault());
 
 function backPage() {
-  const playerResp = confirm(
-    "Deseja sair do jogo? Todo progresso atual será perdido."
-  );
-
-  if (playerResp) {
+  if (playerWinGame) {
     window.history.back();
+  } else {
+    const playerResp = confirm(
+      "Deseja sair do jogo? Todo progresso atual será perdido."
+    );
+
+    if (playerResp) {
+      window.history.back();
+    }
   }
 }
 
@@ -63,8 +67,10 @@ function cleanNameCards() {
 
 function checkGameWin() {
   const disabledCards = document.querySelectorAll(".disabledCard");
-  if (disabledCards.length === 16) {
+  if (disabledCards.length === 24) {
     clearInterval(finishTimerInterval);
+
+    playerWinGame = true;
 
     const userData = {
       name: playerName.textContent,
@@ -159,3 +165,5 @@ clickFlipCard();
 const initialDateTimer = new Date();
 let finishTimerInterval;
 setStartTime();
+
+let playerWinGame = false;

@@ -16,6 +16,15 @@ function crateBodyTableRank() {
       .filter((value, index) => index < 10);
   }
   bodyTableRank.innerHTML = "";
+  for (let i = 0; i < 10; i++) {
+    bodyTableRank.innerHTML += `
+    <tr>
+      <td>${i + 1}</td>
+      <td>${rankSorted ? rankSorted[i]?.name || "" : ""}</td>
+      <td>${rankSorted ? rankSorted[i]?.time || "" : ""}</td>
+    </tr>
+    `;
+  }
 }
 
 const backButton = document.querySelector(".backButton");
