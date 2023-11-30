@@ -5,9 +5,8 @@ function backPage() {
     window.history.back();
   } else {
     const playerResp = confirm(
-      "Deseja sair do jogo? Todo progresso atual será perdido."
+      "Deseja sair do jogo? Você perderá seu progresso!"
     );
-
     if (playerResp) {
       window.history.back();
     }
@@ -67,7 +66,7 @@ function cleanNameCards() {
 
 function checkGameWin() {
   const disabledCards = document.querySelectorAll(".disabledCard");
-  if (disabledCards.length === 24) {
+  if (disabledCards.length === 2) {
     clearInterval(finishTimerInterval);
 
     playerWinGame = true;
@@ -85,11 +84,12 @@ function checkGameWin() {
     } else {
       localStorage.setItem("@memoryGame:rank", JSON.stringify([userData]));
     }
-    setTimeout(() => {
-      alert(
-        `Parabéns ${storagePlayerName}, você venceu com tempo de ${timer.innerHTML}!`
-      );
-    }, 500);
+
+    alert(
+      `Parabéns ${storagePlayerName}, você venceu com tempo de ${timer.innerHTML}!`
+    );
+
+    backPage();
   }
 }
 
