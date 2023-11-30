@@ -79,10 +79,11 @@ function checkGameWin() {
     } else {
       localStorage.setItem("@memoryGame:rank", JSON.stringify([userData]));
     }
-
-    alert(
-      `Parabéns ${storagePlayerName}, você venceu com tempo de ${timer.innerHTML}!`
-    );
+    setTimeout(() => {
+      alert(
+        `Parabéns ${storagePlayerName}, você venceu com tempo de ${timer.innerHTML}!`
+      );
+    }, 500);
   }
 }
 
