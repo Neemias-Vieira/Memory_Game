@@ -63,7 +63,7 @@ function cleanNameCards() {
 
 function checkGameWin() {
   const disabledCards = document.querySelectorAll(".disabledCard");
-  if (disabledCards.length === 24) {
+  if (disabledCards.length === 16) {
     clearInterval(finishTimerInterval);
 
     const userData = {
